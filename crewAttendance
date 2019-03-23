@@ -1,0 +1,95 @@
+<!DOCTYE html>
+<html>
+<h3>Crew Attendance</h3> 
+<body> 
+    <form> 
+
+        <b>Select Absent</b> 
+        <br> 
+        <input type="checkbox" name="rower" id="arnoldGrant"> 
+        <label for="arnoldGrant">Grant Arnold</label> 
+        <br>
+        <input type="checkbox" name="rower" id="burkeConor"> 
+        <label for="sceince">Conor Burke</label> 
+        <br>
+        <input type="checkbox" name="rower" id="capodilupoVincent"> 
+        <label for="capodilupoVincent">Vincent Capodilupo</label> 
+        <br>
+        <input type="checkbox" name="rower" id="carielloJospeph"> 
+        <label for="carielloJospeph">Joseph Cariello</label> 
+        <br>
+        <input type="checkbox" name="rower" id="delisleChris"> 
+        <label for="delisleChris">Chris Delisle</label> 
+        <br>
+        <input type="checkbox" name="rower" id="fontaineNicholas"> 
+        <label for="fontaineNicholas">Nicholas Fontaine</label> 
+        <br>
+        <input type="checkbox" name="rower" id="girardWill"> 
+        <label for="girardWill">Will Girard</label> 
+        <br>
+        <input type="checkbox" name="rower" id="jozokosLiam"> 
+        <label for="jozokosLiam">Liam Jozokos</label> 
+        <br>
+        <input type="checkbox" name="rower" id="kasyjanskiJack"> 
+        <label for="kasyjanskiJack">Jack Kasyjanski</label> 
+        <br>
+        <input type="checkbox" name="rower" id="kempEthan"> 
+        <label for="kempEthan">Ethan Kemp</label> 
+        <br>
+        <input type="checkbox" name="rower" id="kyleMatthew"> 
+        <label for="kyleMatthew">Matthew Kyle</label> 
+        <br>
+        <input type="checkbox" name="rower" id="letendreZach"> 
+        <label for="letendreZach">Zach Letendre</label> 
+        <br>
+        <input type="checkbox" name="rower" id="marksMatthew"> 
+        <label for="marksMatthew">Matthew Marks</label> 
+        <br>
+        <input type="checkbox" name="rower" id="nagarajuRohan"> 
+        <label for="nagarajuRohan">Rohan Nagaraju</label> 
+        <br>
+        <input type="checkbox" name="rower" id="natarajanNikhil"> 
+        <label for="natarajanNikhil">Nikhil Natarajan</label> 
+        <br>
+        <input type="checkbox" name="rower" id="nelsonReed"> 
+        <label for="nelsonReed">Reed Nelson</label> 
+        <br>
+        <input type="checkbox" name="rower" id="obreiterAndrew"> 
+        <label for="obreiterAndrew">Andrew Obreiter</label> 
+        <br>
+        <input type="checkbox" name="rower" id="pepinBrandon"> 
+        <label for="pepinBrandon">Brandon Pepin</label> 
+        <br>
+        <input type="checkbox" name="rower" id="piacentiniJoey"> 
+        <label for="piacentiniJoey">Joey Piacentini</label> 
+        <br>
+        <input type="checkbox" name="rower" id="redmanJonnie"> 
+        <label for="redmanJonnie">Jonnie Redman</label> 
+        <br>
+        <input type="checkbox" name="rower" id="saldanhaLeo"> 
+        <label for="saldanhaLeo">Leo Saldanha</label> 
+        <br>
+        <input type="checkbox" name="rower" id="schwartzMatt"> 
+        <label for="schwartzMatt">Matt Schwartz</label> 
+        <br>
+        <input type="checkbox" name="rower" id="sevignyJake"> 
+        <label for="sevignyJake">Jake Sevigny</label> 
+        <br>
+        <input type="checkbox" name="rower" id="grayTheodore"> 
+        <label for="grayTheodore">Gray Theodore</label> 
+        <br>
+        <input type="checkbox" name="rower" id="truongAydan"> 
+        <label for="truongAydan">Aydan Truong</label> 
+        <br>
+        <input type="checkbox" name="rower" id="vitaliEthan"> 
+        <label for="vitaliEthan">Ethan Vitali</label> 
+        <br>
+        <input type="checkbox" name="rower" id="wilbertonMichael"> 
+        <label for="wilbertonMichael">Michael Wilberton</label> 
+        <br>
+         <div class="button">
+           <br>
+            <button type="submit">Submit</button>
+         </div>
+</body> 
+</html>
