@@ -2,7 +2,7 @@
 <html>
 <h3>Crew Attendance</h3> 
 <body> 
-    <form> 
+    <form id="form">
 
         <b>Select Absent</b> 
         <br> 
@@ -91,5 +91,57 @@
            <br>
             <button type="submit">Submit</button>
          </div>
-</body> 
+</body>
+<script>
+const state = {
+  people: new Set([
+    "Grant Arnold",
+    "Conor Burke",
+    "Vincent Capodilupo",
+    "Joseph Cariello",
+    "Chris Delisle",
+    "Nicholas Fontaine",
+    "Will Girard",
+    "Liam Jozokos",
+    "Jack Kasyjanski",
+    "Ethan Kemp",
+    "Matthew Kyle",
+    "Zach Letendre",
+    "Matthew Marks",
+    "Rohan Nagaraju",
+    "Nikhil Natarajan",
+    "Reed Nelson",
+    "Andrew Obreiter",
+    "Brandon Pepin",
+    "Joey Piacentini",
+    "Jonnie Redman",
+    "Leo Saldanha",
+    "Matt Schwartz",
+    "Jake Sevigny",
+    "Gray Theodore",
+    "Aydan Truong",
+    "Ethan Vitali",
+    "Michael Wilberton"
+  ]),
+  attendances: {}
+}
+
+const setDifference = a => b =>
+  new Set( [...a].filter(x => !b.has(x)) )
+
+const addAttendance = date => attendance =>
+  state.attendances[date] = {
+    present: attendance,
+    absent: setDifference(state.people)(attendance) 
+  }
+
+[...state.people].sort().reduce((form, person) => {
+  const id = person.replace(/\s+/g, "")
+  form.write(`
+    <input type="checkbox" id="${id}"> 
+    <label for="${id}">${person}</label> 
+    <br>
+  `)
+}, document.querySelector("#form"))
+</script>
 </html>
