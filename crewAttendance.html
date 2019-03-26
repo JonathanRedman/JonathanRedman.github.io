@@ -1,10 +1,11 @@
-<!DOCTYE html>
 <html>
-<h3>Crew Attendance</h3> 
-<body> 
-  <form id="form">
-    <b>Select Absent</b> 
-    <br>
+<h3>Crew Attendance</h3>
+<body>
+  <form>
+    <h1>Select Absent</h1>
+    <input id="date" type="date">
+    <div id="people"></div>
+    <button id="submit">Submit</button>
   </form>
 </body>
 
@@ -52,14 +53,20 @@ const addAttendance = date => attendance => {
   }
 }
 
-document.querySelector("#form").innerHTML +=
-([...state.people]).reduce((form, person) => {
-  const id = person.replace(/\s+/g, "")
-  return form += (`
-    <input type="checkbox" id="${id}"> 
-    <label for="${id}">${person}</label> 
-    <br>
-  `)
-}, "")
+document.querySelector("#people").innerHTML =
+  ([...state.people]).reduce((people, person) => {
+    const id = person.replace(/\s+/g, "")
+    return people +=(`
+    <div>
+      <input type="checkbox" id="${id}"> 
+      <label for="${id}">${person}</label> 
+    </div>`)
+  }, "")
+
+document.querySelector("#submit").onclick = _ =>
+  document.querySelector("#date").value
+    ? addAttendance(document.querySelector("#date").value)
+                   (new Set([/* To Do */]))
+    : alert("No date")
 </script>
 </html>
