@@ -11,35 +11,41 @@
 
 <script>
 const state = {
-  people: new Set([
-    "Grant Arnold",
-    "Conor Burke",
-    "Vincent Capodilupo",
-    "Joseph Cariello",
-    "Chris Delisle",
-    "Nicholas Fontaine",
-    "Will Girard",
-    "Liam Jozokos",
-    "Jack Kasyjanski",
-    "Ethan Kemp",
-    "Matthew Kyle",
-    "Zach Letendre",
-    "Matthew Marks",
-    "Rohan Nagaraju",
-    "Nikhil Natarajan",
-    "Reed Nelson",
-    "Andrew Obreiter",
-    "Brandon Pepin",
-    "Joey Piacentini",
-    "Jonnie Redman",
-    "Leo Saldanha",
-    "Matt Schwartz",
-    "Jake Sevigny",
-    "Gray Theodore",
-    "Aydan Truong",
-    "Ethan Vitali",
-    "Michael Wilberton"
-  ]),
+  get people() {
+    return localStorage.getItem("people") || new Set([
+      "Grant Arnold",
+      "Conor Burke",
+      "Vincent Capodilupo",
+      "Joseph Cariello",
+      "Chris Delisle",
+      "Nicholas Fontaine",
+      "Will Girard",
+      "Liam Jozokos",
+      "Jack Kasyjanski",
+      "Ethan Kemp",
+      "Matthew Kyle",
+      "Zach Letendre",
+      "Matthew Marks",
+      "Rohan Nagaraju",
+      "Nikhil Natarajan",
+      "Reed Nelson",
+      "Andrew Obreiter",
+      "Brandon Pepin",
+      "Joey Piacentini",
+      "Jonnie Redman",
+      "Leo Saldanha",
+      "Matt Schwartz",
+      "Jake Sevigny",
+      "Gray Theodore",
+      "Aydan Truong",
+      "Ethan Vitali",
+      "Michael Wilberton"
+    ])
+  }
+  
+  set people(people) {
+    return localStorage.setItem("people", people)
+  }
   attendances: {}
 }
 
@@ -66,7 +72,10 @@ document.querySelector("#people").innerHTML =
 document.querySelector("#submit").onclick = _ =>
   document.querySelector("#date").value
     ? addAttendance(document.querySelector("#date").value)
-                   (new Set([/* To Do */]))
+                   (new Set(
+                      Array.from(document.querySelector("#people").children)
+                        .filter(div => div.querySelector("input").checked)
+                        .map(div => div.querySelector("label").textContent) ))
     : alert("No date")
 </script>
 </html>
