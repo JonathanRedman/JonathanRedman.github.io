@@ -10,7 +10,9 @@
 <script>
 const state = {
   get people() {
-    return localStorage.getItem("people") || new Set([
+    return new Set(
+      JSON.parse(localStorage.getItem("people"))
+    || [
       "Grant Arnold",
       "Conor Burke",
       "Vincent Capodilupo",
@@ -39,12 +41,19 @@ const state = {
       "Ethan Vitali",
       "Michael Wilberton"
     ])
-  }
-  
+  },
+
   set people(people) {
-    return localStorage.setItem("people", people)
+    return localStorage.setItem("people", JSON.stringify([...people]))
+  },
+
+  get attendances() {
+    return JSON.parse(localStorage.getItem("attendances")) || {}
+  },
+
+  set attendances(attendances) {
+    return localStorage.setItem("attendances", JSON.stringify(attendances))
   }
-  attendances: {}
 }
 
 const setDifference = a => b =>
