@@ -60,10 +60,10 @@ const setDifference = a => b =>
   new Set( [...a].filter(x => !b.has(x)) )
 
 const addAttendance = date => attendance => {
-  return state.attendances[date] = {
+  return state.attendances = Object.assign({}, state.attendances, {
     present: [...attendance],
     absent:  [...setDifference(state.people)(attendance)] 
-  }
+  })
 }
 
 document.querySelector("#people").innerHTML =
