@@ -61,19 +61,19 @@ const setDifference = a => b =>
 
 const addAttendance = date => attendance => {
   return state.attendances[date] = {
-    present: attendance,
-    absent: setDifference(state.people)(attendance) 
+    present: [...attendance],
+    absent:  [...setDifference(state.people)(attendance)] 
   }
 }
 
 document.querySelector("#people").innerHTML =
   ([...state.people]).reduce((people, person) => {
     const id = person.replace(/\s+/g, "")
-    return people +=(`
+    return people += `
     <div>
       <input type="checkbox" id="${id}"> 
       <label for="${id}">${person}</label> 
-    </div>`)
+    </div>`
   }, "")
 
 document.querySelector("#submit").onclick = _ =>
