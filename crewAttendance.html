@@ -5,6 +5,8 @@
   <input id="date" type="date">
   <div id="people"></div>
   <button id="submit">Submit</button>
+  
+  <table id="attendances"></table>
 </body>
 
 <script>
@@ -59,15 +61,27 @@ const state = {
 const setDifference = a => b =>
   new Set( [...a].filter(x => !b.has(x)) )
 
-const addAttendance = date => attendance => {
-  return state.attendances = Object.assign({}, state.attendances,
+const addAttendance = date => absent => {
+  state.attendances = Object.assign({}, state.attendances,
     {
       [date]: {
-        present: [...attendance],
-        absent:  [...setDifference(state.people)(attendance)] 
+        absent:  [...absent],
+        present: [...setDifference(state.people)(absent)] 
       }
     })
+  
+  showAttendance()
 }
+
+const showAttendances = () =>
+  document.querySelector("#attendances").innerHTML =
+    Object.entries(state.attendances).reduce((attendances, [date, attendance]) => {
+      return attendances += `
+      <tr>
+        <th>${date}</th>
+        <th>${attendance.absent.join(", ")}</th>
+      </tr>
+    }, "")
 
 document.querySelector("#people").innerHTML =
   ([...state.people]).reduce((people, person) => {
