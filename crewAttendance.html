@@ -76,17 +76,17 @@ const addAttendance = date => absent => {
 const showAttendances = () =>
   document.querySelector("#attendances").innerHTML =
     Object.entries(state.attendances).reduce((attendances, [date, attendance]) => {
-      return attendances += `
+      return attendances + `
       <tr>
         <th>${date}</th>
         <th>${attendance.absent.join(", ")}</th>
-      </tr>
+      </tr>`
     }, "")
 
 document.querySelector("#people").innerHTML =
   ([...state.people]).reduce((people, person) => {
     const id = person.replace(/\s+/g, "")
-    return people += `
+    return people + `
     <div>
       <input type="checkbox" id="${id}"> 
       <label for="${id}">${person}</label> 
