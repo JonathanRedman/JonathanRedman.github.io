@@ -1,0 +1,107 @@
+<html>
+<h3>Crew Attendance</h3>
+<body>
+  <h1>Select Absent</h1>
+  <input id="date" type="date">
+  <div id="people"></div>
+  <button id="submit">Submit</button>
+  
+  <table id="attendances"></table>
+</body>
+
+<script>
+const state = {
+  get people() {
+    return new Set(
+      JSON.parse(localStorage.getItem("people"))
+    || [
+      "Grant Arnold",
+      "Conor Burke",
+      "Vincent Capodilupo",
+      "Joseph Cariello",
+      "Chris Delisle",
+      "Nicholas Fontaine",
+      "Will Girard",
+      "Liam Jozokos",
+      "Jack Kasyjanski",
+      "Ethan Kemp",
+      "Matthew Kyle",
+      "Zach Letendre",
+      "Matthew Marks",
+      "Rohan Nagaraju",
+      "Nikhil Natarajan",
+      "Reed Nelson",
+      "Andrew Obreiter",
+      "Brandon Pepin",
+      "Joey Piacentini",
+      "Jonnie Redman",
+      "Leo Saldanha",
+      "Matt Schwartz",
+      "Jake Sevigny",
+      "Gray Theodore",
+      "Aydan Truong",
+      "Ethan Vitali",
+      "Michael Wilberton"
+    ])
+  },
+
+  set people(people) {
+    return localStorage.setItem("people", JSON.stringify([...people]))
+  },
+
+  get attendances() {
+    return JSON.parse(localStorage.getItem("attendances")) || {}
+  },
+
+  set attendances(attendances) {
+    return localStorage.setItem("attendances", JSON.stringify(attendances))
+  }
+}
+
+const setDifference = a => b =>
+  new Set( [...a].filter(x => !b.has(x)) )
+
+const addAttendance = date => absent => {
+  state.attendances = Object.assign({}, state.attendances,
+    {
+      [date]: {
+        absent:  [...absent],
+        present: [...setDifference(state.people)(absent)] 
+      }
+    })
+  
+  showAttendances()
+}
+
+const showAttendances = () =>
+  document.querySelector("#attendances").innerHTML =
+    Object.entries(state.attendances).reduce((attendances, [date, attendance]) => {
+      return attendances + `
+      <tr>
+        <th>${date}</th>
+        <th>${attendance.absent.join(", ")}</th>
+      </tr>`
+    }, "")
+
+showAttendances()
+
+document.querySelector("#people").innerHTML =
+  ([...state.people]).reduce((people, person) => {
+    const id = person.replace(/\s+/g, "")
+    return people + `
+    <div>
+      <input type="checkbox" id="${id}"> 
+      <label for="${id}">${person}</label> 
+    </div>`
+  }, "")
+
+document.querySelector("#submit").onclick = _ =>
+  document.querySelector("#date").value
+    ? addAttendance(document.querySelector("#date").value)
+                   (new Set(
+                      Array.from(document.querySelector("#people").children)
+                        .filter(div => div.querySelector("input").checked)
+                        .map(div => div.querySelector("label").textContent) ))
+    : alert("No date")
+</script>
+</html>
