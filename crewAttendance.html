@@ -83,6 +83,8 @@ const showAttendances = () =>
       </tr>`
     }, "")
 
+showAttendances()
+
 document.querySelector("#people").innerHTML =
   ([...state.people]).reduce((people, person) => {
     const id = person.replace(/\s+/g, "")
